@@ -18,9 +18,13 @@ public class HomePageTest {
     TopNavigation topNavigation;
     RequestDemoPage requestDemoPage;
 <<<<<<< HEAD
+<<<<<<< HEAD
     //LiveTraining liveTraining;
     NavBarPage navBarPage;
    // RoomsAndWorkspaces roomsAndWorkspaces;
+=======
+    NavBarPage navBarPage;
+>>>>>>> 6316963b81f07a429434421adf0eccff1ef575d8
 
 =======
     ZoomBlog zoomBlog;
@@ -35,8 +39,18 @@ public class HomePageTest {
         driver.manage().window().maximize();
 <<<<<<< HEAD
        // driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+<<<<<<< HEAD
 =======
 >>>>>>> d1e7da24fd616cf2c9f2c16edcd198ea52e4cae9
+=======
+    }
+
+    @BeforeMethod
+    public void setPages() { topNavigation = new TopNavigation(driver);
+    navBarPage = new NavBarPage(driver); }
+
+=======
+>>>>>>> 6316963b81f07a429434421adf0eccff1ef575d8
     }
 
     @BeforeMethod
@@ -44,6 +58,7 @@ public class HomePageTest {
         topNavigation = new TopNavigation(driver);
         navBarPage = new NavBarPage(driver);
     }
+>>>>>>> d1e7da24fd616cf2c9f2c16edcd198ea52e4cae9
 
     @Test
     public void testRequestDemo() {
@@ -60,6 +75,25 @@ public class HomePageTest {
         FaQPage faQPage = topNavigation.clickFAQ();
     }
 
+<<<<<<< HEAD
+
+    @Test
+    public void testDownloadZoomClient(){DownloadZoomClient downloadZoomClient = topNavigation.clickDownloadZoom();}
+
+    @Test
+    public void testMeetingsAndChat(){MeetingsAndChat meetingsAndChat = navBarPage.clickMeetingChat();}
+
+    @AfterSuite
+    public void tearDown() {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.quit();
+    }
+
+=======
     @Test
 <<<<<<< HEAD
     public void testLiveTraining(){
@@ -99,6 +133,7 @@ public class HomePageTest {
 //        }
 //        driver.quit();
 //    }
+>>>>>>> d1e7da24fd616cf2c9f2c16edcd198ea52e4cae9
 
 
 
