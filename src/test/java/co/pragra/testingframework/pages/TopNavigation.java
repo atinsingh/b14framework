@@ -25,6 +25,9 @@ public class TopNavigation {
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us'")
     private WebElement support;
 
+    @FindBy(css = "a[href='https://zoom.us/livetraining'")
+    private WebElement livetraining;
+
     public TopNavigation(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
@@ -43,4 +46,9 @@ public class TopNavigation {
     }
 
 
+    public LiveTraining clickLiveTraining(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(resources).moveToElement(livetraining).click().perform();
+        return new LiveTraining(driver);
+    }
 }
