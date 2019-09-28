@@ -34,6 +34,10 @@ public class RequestDemoPage {
         return emailInput;
     }
 
+    public RequestDemoPage and(){
+        return this;
+    }
+
     public WebElement getCompanyInput() {
         return companyInput;
     }
