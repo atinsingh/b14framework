@@ -22,6 +22,9 @@ public class TopNavigation {
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us/articles/206175806-Top-Questions'")
     private WebElement faq;
 
+    @FindBy(xpath = "//*[@id=\"resourcesDropdown\"]/li[9]/a")
+    private WebElement zoomblog;
+
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us'")
     private WebElement support;
 
@@ -40,6 +43,12 @@ public class TopNavigation {
         Actions actions = new Actions(driver);
         actions.moveToElement(resources).moveToElement(faq).click().perform();
         return new FaQPage(driver);
+    }
+
+    public ZoomBlog clickZoomBlog(){
+        Actions actions=new Actions(driver);
+        actions.moveToElement(resources).moveToElement(zoomblog).click().perform();
+        return new ZoomBlog(driver);
     }
 
 
