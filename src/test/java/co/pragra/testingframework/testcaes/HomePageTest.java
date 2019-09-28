@@ -47,10 +47,10 @@ public class HomePageTest {
     public void testMarketPlace() {
         MarketPlace mp = navBarPage.clickMarketPlace();
     }
-    @Test
-    public void testPhoneTest() {
-        PhoneSystemPage mp = navBarPage.clickPhoneSystem();
-    }
+//    @Test
+//    public void testPhoneTest() {
+//        PhoneSystemPage mp = navBarPage.clickPhoneSystem();
+//    }
 
     @AfterSuite
     public void tearDown() {

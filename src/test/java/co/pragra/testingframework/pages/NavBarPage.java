@@ -9,13 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 public class NavBarPage {
     private WebDriver driver;
 
-    @FindBy(xpath = "//*[@id=\"navbar\"]/ul[1]/li[2]/a")
+    @FindBy(xpath = "//*[@id=\"btnSolutions\"]")
     private WebElement sol;
-    @FindBy(xpath = "//*[@id=\"first-col-nav\"]/div/a[5]")
+    @FindBy(css ="a[href*='https://marketplace.zoom.us/?_ga=2.237357440.1682688846.1569680253-811731806.1562719877']")
     private WebElement mk;
 
-    @FindBy(xpath = "//*[@id=\"first-col-nav\"]/div/a[3]/h3")
-    private WebElement pk;
+//    @FindBy(xpath = "//*[@id=\"first-col-nav\"]/div/a[3]/h3")
+//    private WebElement pk;
 
     public NavBarPage(WebDriver driver) {
         this.driver = driver;
@@ -23,17 +23,18 @@ public class NavBarPage {
     }
     public MarketPlace clickMarketPlace(){
         Actions actions = new Actions(driver);
-        actions.moveToElement(sol).build().perform();
+        actions.moveToElement(sol);
+        actions.build().perform();
 
         actions.moveToElement(mk).click().perform();
         return new MarketPlace(driver);
     }
-    public PhoneSystemPage clickPhoneSystem(){
-        Actions actions = new Actions(driver);
-        actions.moveToElement(sol).build().perform();
-
-        actions.moveToElement(pk).click().perform();
-        return new PhoneSystemPage(driver);
-    }
+//    public PhoneSystemPage clickPhoneSystem(){
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(sol).build().perform();
+//
+//        actions.moveToElement(pk).click().perform();
+//        return new PhoneSystemPage(driver);
+//    }
 
 }
