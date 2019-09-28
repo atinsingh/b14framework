@@ -22,6 +22,9 @@ public class TopNavigation {
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us/articles/206175806-Top-Questions'")
     private WebElement faq;
 
+    @FindBy(xpath = "//*[@id=\"resourcesDropdown\"]/li[9]/a")
+    private WebElement zoomblog;
+
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us'")
     private WebElement support;
 
@@ -43,6 +46,7 @@ public class TopNavigation {
         return new FaQPage(driver);
     }
 
+<<<<<<< HEAD
     public DownloadZoomClient clickDownloadZoom(){
         Actions actions = new Actions(driver);
         actions.moveToElement(resources).moveToElement(downloadzoomclient).click().perform();
@@ -54,4 +58,12 @@ public class TopNavigation {
 
 
 
+=======
+    public ZoomBlog clickZoomBlog(){
+        Actions actions=new Actions(driver);
+        actions.moveToElement(resources).moveToElement(zoomblog).click().perform();
+        return new ZoomBlog(driver);
+    }
+
+>>>>>>> d1e7da24fd616cf2c9f2c16edcd198ea52e4cae9
 
