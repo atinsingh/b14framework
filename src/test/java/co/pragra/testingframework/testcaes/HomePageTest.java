@@ -2,29 +2,32 @@ package co.pragra.testingframework.testcaes;
 
 import co.pragra.testingframework.config.Configuration;
 import co.pragra.testingframework.drivermanager.DriverManager;
-import co.pragra.testingframework.pages.FaQPage;
-import co.pragra.testingframework.pages.HomePage;
-import co.pragra.testingframework.pages.RequestDemoPage;
-import co.pragra.testingframework.pages.TopNavigation;
+import co.pragra.testingframework.pages.*;
 import org.openqa.selenium.WebDriver;
 
 import org.testng.annotations.*;
+
+import java.util.concurrent.TimeUnit;
 
 public class HomePageTest {
     WebDriver driver;
     TopNavigation topNavigation;
     RequestDemoPage requestDemoPage;
+    NavBarPage navBarPage;
+
 
     @BeforeSuite
     public void setUp() {
         driver = DriverManager.getWebDriver();
         driver.get(Configuration.getInstance().getProperty("appUrl"));
+        driver.manage().window().maximize();
+       // driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @BeforeMethod
-    public void setPages() {
-        topNavigation = new TopNavigation(driver);
-    }
+    public void setPages() { topNavigation = new TopNavigation(driver);
+    navBarPage = new NavBarPage(driver); }
+
 
     @Test
     public void testRequestDemo() {
@@ -40,6 +43,13 @@ public class HomePageTest {
         FaQPage faQPage = topNavigation.clickFAQ();
     }
 
+
+    @Test
+    public void testDownloadZoomClient(){DownloadZoomClient downloadZoomClient = topNavigation.clickDownloadZoom();}
+
+    @Test
+    public void testMeetingsAndChat(){MeetingsAndChat meetingsAndChat = navBarPage.clickMeetingChat();}
+
     @AfterSuite
     public void tearDown() {
         try {
@@ -49,4 +59,8 @@ public class HomePageTest {
         }
         driver.quit();
     }
+
+
+
+
 }

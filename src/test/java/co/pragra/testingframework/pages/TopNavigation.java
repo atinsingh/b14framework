@@ -25,12 +25,13 @@ public class TopNavigation {
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us'")
     private WebElement support;
 
+    @FindBy (css = "a[href='https://zoom.us/download#client_4meeting'")
+    private WebElement downloadzoomclient;
+
     public TopNavigation(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
-
-
     public RequestDemoPage clickRequestDemoLink(){
         this.requstADemoLink.click();
         return new RequestDemoPage(driver);
@@ -42,5 +43,15 @@ public class TopNavigation {
         return new FaQPage(driver);
     }
 
+    public DownloadZoomClient clickDownloadZoom(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(resources).moveToElement(downloadzoomclient).click().perform();
+        return new DownloadZoomClient(driver);
+    }
 
-}
+    }
+
+
+
+
+
