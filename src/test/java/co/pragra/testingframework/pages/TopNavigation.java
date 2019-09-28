@@ -21,6 +21,8 @@ public class TopNavigation {
 
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us/articles/206175806-Top-Questions'")
     private WebElement faq;
+    @FindBy(css = "a[href='https://zoom.us/events'")
+    private WebElement waevents;
 
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us'")
     private WebElement support;
@@ -41,6 +43,12 @@ public class TopNavigation {
         actions.moveToElement(resources).moveToElement(faq).click().perform();
         return new FaQPage(driver);
     }
+    public WebinarsAndEvents clickWebinaraAndEvents(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(resources).moveToElement(waevents).click().perform();
+        return new WebinarsAndEvents(driver);
+    }
+
 
 
 }
