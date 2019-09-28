@@ -12,7 +12,7 @@ public class NavBarPage {
     @FindBy(css = "li[class= 'dropdown mobile-hide']>a[id='btnSolutions']")
     private WebElement solutions;
 // @FindBy(css = "a[href*=\"zoomrooms\"]")
-    @FindBy(css = "a[href*=\\"zoomrooms\\"]")
+    @FindBy(css = "a[href*='zoomrooms']")
     private WebElement roomsAndWorkspaces;
 
 
@@ -26,8 +26,8 @@ public class NavBarPage {
 
     public RoomsAndWorkspaces clickRoomsAndWorkspaces(){
         Actions actions = new Actions(driver);
-        actions.moveToElement(solutions).moveToElement(roomsAndWorkspaces).click().build().perform();
-     //  actions.moveToElement(roomsAndWorkspaces).click().build().perform();
+        actions.moveToElement(solutions).build().perform();
+       actions.moveToElement(roomsAndWorkspaces).click().build().perform();
         return new RoomsAndWorkspaces(driver);
 
 

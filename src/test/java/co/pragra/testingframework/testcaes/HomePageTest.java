@@ -7,13 +7,15 @@ import org.openqa.selenium.WebDriver;
 
 import org.testng.annotations.*;
 
+import java.util.concurrent.TimeUnit;
+
 public class HomePageTest {
     WebDriver driver;
     TopNavigation topNavigation;
     RequestDemoPage requestDemoPage;
-    LiveTraining liveTraining;
+    //LiveTraining liveTraining;
     NavBarPage navBarPage;
-    RoomsAndWorkspaces roomsAndWorkspaces;
+   // RoomsAndWorkspaces roomsAndWorkspaces;
 
 
     @BeforeSuite
@@ -21,6 +23,7 @@ public class HomePageTest {
         driver = DriverManager.getWebDriver();
         driver.get(Configuration.getInstance().getProperty("appUrl"));
         driver.manage().window().maximize();
+       // driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @BeforeMethod
@@ -50,13 +53,13 @@ public class HomePageTest {
 
     @Test
     public void testRoomsAndWorkspaces(){
-        RoomsAndWorkspaces roomsAndWorkspaces = navBarPage.clickRoomsAndWorkspaces();
+       RoomsAndWorkspaces  roomsAndWorkspaces = navBarPage.clickRoomsAndWorkspaces();
     }
 
     @AfterSuite
     public void tearDown() {
         try {
-            Thread.sleep(10000);
+            Thread.sleep(20000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
