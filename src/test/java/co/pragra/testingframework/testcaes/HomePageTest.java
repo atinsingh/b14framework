@@ -5,13 +5,19 @@ import co.pragra.testingframework.drivermanager.DriverManager;
 import co.pragra.testingframework.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+
+
 import java.util.concurrent.TimeUnit;
 
 public class HomePageTest {
     WebDriver driver;
     TopNavigation topNavigation;
     RequestDemoPage requestDemoPage;
+
     NavBarPage navBarPage;
+    
+   // PhoneSystemPage phoneSystemPage;
+    MeetingAndChats meetingAndChats;
    // RoomsAndWorkspaces roomsAndWorkspaces;
     ZoomBlog zoomBlog;
     VideoWebinars videoWebinars;
@@ -32,6 +38,9 @@ public class HomePageTest {
     }
 
 
+
+
+
     @Test
     public void testRequestDemo() {
         requestDemoPage = topNavigation.clickRequestDemoLink();
@@ -46,11 +55,39 @@ public class HomePageTest {
 
         FaQPage faQPage = topNavigation.clickFAQ();
     }
-
+    @Test
+    public void testWAE() {
+        WebinarsAndEvents wae = topNavigation.clickWebinaraAndEvents();
+    }
+    @Test
+    public void testMarketPlace() {
+        MarketPlace mp = navBarPage.clickMarketPlace();
+    }
 
 
     @Test
-    public void testDownloadZoomClient(){DownloadZoomClient downloadZoomClient = topNavigation.clickDownloadZoom();}
+    public void testVideoTutorial() {
+        VideoTutorialPage videoTutorialPage = topNavigation.clickVideoTutorial();
+    }
+
+    @Test
+    public void testPhoneSystem(){
+
+       PhoneSystemPage phoneSystemPage = navBarPage.clickPhoneSystem();
+    }
+
+//    @Test
+//    public void testMeetingAndChats(){
+//
+//        meetingAndChats = navBarPage.clickMeetingAndChats();
+//    }
+
+
+    @Test
+    public void testDownloadZoomClient()
+    {
+        DownloadZoomClient downloadZoomClient = topNavigation.clickDownloadZoom();
+    }
 
     @Test
     public void testMeetingsAndChat(){MeetingsAndChat meetingsAndChat = navBarPage.clickMeetingChat();}
@@ -62,29 +99,32 @@ public class HomePageTest {
     }
 
     @Test
-    public void testRoomsAndWorkspaces(){
-       RoomsAndWorkspaces  roomsAndWorkspaces = navBarPage.clickRoomsAndWorkspaces();
+    public void testEducation()
+    {
+        educationSol educationsol = navBarPage.clickEducation();
     }
 
-    @AfterSuite
-    public void tearDown() {
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+
+
+
+        @AfterSuite
+        public void tearDown () {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+          
         driver.quit();
     }
     public void testZoomBlog(){
        ZoomBlog zoomBlog= topNavigation.clickZoomBlog();
 
     }
-
-    @Test
-    public void testVideoWebinar(){
-        VideoWebinars videoWebinars= navBarPage.clickVideoWebinars();
-    }
-
-
-
 }
+
+
+
+
+

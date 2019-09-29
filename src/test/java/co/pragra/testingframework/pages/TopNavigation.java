@@ -21,6 +21,8 @@ public class TopNavigation {
 
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us/articles/206175806-Top-Questions'")
     private WebElement faq;
+    @FindBy(css = "a[href='https://zoom.us/events'")
+    private WebElement waevents;
 
     @FindBy(xpath = "//*[@id=\"resourcesDropdown\"]/li[9]/a")
     private WebElement zoomblog;
@@ -28,13 +30,15 @@ public class TopNavigation {
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us'")
     private WebElement support;
 
-<<<<<<< HEAD
+
+   @FindBy(css = "a[href='https://support.zoom.us/hc/en-us/articles/206618765-Zoom-Video-Tutorials']")
+    private WebElement videoTutorial;
     @FindBy(css = "a[href='https://zoom.us/livetraining'")
     private WebElement livetraining;
-=======
+
     @FindBy (css = "a[href='https://zoom.us/download#client_4meeting'")
     private WebElement downloadzoomclient;
->>>>>>> 6316963b81f07a429434421adf0eccff1ef575d8
+
 
     public TopNavigation(WebDriver driver) {
         this.driver = driver;
@@ -50,34 +54,38 @@ public class TopNavigation {
         actions.moveToElement(resources).moveToElement(faq).click().perform();
         return new FaQPage(driver);
     }
+    public WebinarsAndEvents clickWebinaraAndEvents(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(resources).moveToElement(waevents).click().perform();
+        return new WebinarsAndEvents(driver);
+    }
 
-<<<<<<< HEAD
+
+
+    public VideoTutorialPage clickVideoTutorial(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(resources).moveToElement(videoTutorial).click().perform();
+        return new VideoTutorialPage(driver);
+    }
+
     public DownloadZoomClient clickDownloadZoom(){
         Actions actions = new Actions(driver);
         actions.moveToElement(resources).moveToElement(downloadzoomclient).click().perform();
         return new DownloadZoomClient(driver);
     }
 
-    }
 
-
-
-
-=======
     public ZoomBlog clickZoomBlog(){
         Actions actions=new Actions(driver);
         actions.moveToElement(resources).moveToElement(zoomblog).click().perform();
         return new ZoomBlog(driver);
     }
 
->>>>>>> d1e7da24fd616cf2c9f2c16edcd198ea52e4cae9
 
-<<<<<<< HEAD
     public LiveTraining clickLiveTraining(){
         Actions actions = new Actions(driver);
         actions.moveToElement(resources).moveToElement(livetraining).click().perform();
         return new LiveTraining(driver);
     }
 }
-=======
->>>>>>> 6316963b81f07a429434421adf0eccff1ef575d8
+
