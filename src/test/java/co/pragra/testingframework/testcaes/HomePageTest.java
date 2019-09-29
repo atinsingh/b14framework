@@ -74,7 +74,7 @@ public class HomePageTest {
             e.printStackTrace();
         }
         driver.quit();
-
+    }
     public void testZoomBlog(){
        ZoomBlog zoomBlog= topNavigation.clickZoomBlog();
 
