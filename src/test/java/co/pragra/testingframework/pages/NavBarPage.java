@@ -1,5 +1,6 @@
 package co.pragra.testingframework.pages;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,8 @@ public class NavBarPage {
 
     @FindBy(xpath="//*[@id='first-col-nav']/div/a[4]")
     private  WebElement VideoWeb;
+    private WebElement Solution;
+
 
     public NavBarPage (WebDriver driver) {
         this.driver = driver;

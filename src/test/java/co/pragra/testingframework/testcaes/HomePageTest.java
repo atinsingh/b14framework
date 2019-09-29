@@ -70,6 +70,12 @@ public class HomePageTest {
        RoomsAndWorkspaces  roomsAndWorkspaces = navBarPage.clickRoomsAndWorkspaces();
     }
 
+    @Test
+    public void testVideoWebinar(){
+        VideoWebinars videoWebinars= navBarPage.clickVideoWebinars();
+    }
+
+
     @AfterSuite
     public void tearDown() {
         try {
@@ -85,11 +91,5 @@ public class HomePageTest {
        ZoomBlog zoomBlog= topNavigation.clickZoomBlog();
 
     }
-
-    @Test
-    public void testVideoWebinar(){
-        VideoWebinars videoWebinars= navBarPage.clickVideoWebinars();
-    }
-
-
 }
+
