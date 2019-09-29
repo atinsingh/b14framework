@@ -4,7 +4,6 @@ import co.pragra.testingframework.config.Configuration;
 import co.pragra.testingframework.drivermanager.DriverManager;
 import co.pragra.testingframework.pages.*;
 import org.openqa.selenium.WebDriver;
-
 import org.testng.annotations.*;
 
 
@@ -17,10 +16,13 @@ public class HomePageTest {
 
     NavBarPage navBarPage;
     ZoomBlog zoomBlog;
-
     VideoWebinars videoWebinars;
-
-
+   // PhoneSystemPage phoneSystemPage;
+    MeetingAndChats meetingAndChats;
+   // RoomsAndWorkspaces roomsAndWorkspaces;
+    ZoomBlog zoomBlog;
+    VideoWebinars videoWebinars;
+   
     @BeforeSuite
     public void setUp() {
         driver = DriverManager.getWebDriver();
@@ -29,6 +31,7 @@ public class HomePageTest {
 
     }
 
+   
     @BeforeMethod
     public void setPages() {
         topNavigation = new TopNavigation(driver);
@@ -64,22 +67,35 @@ public class HomePageTest {
 
 
     @Test
+    public void testVideoTutorial() {
+        VideoTutorialPage videoTutorialPage = topNavigation.clickVideoTutorial();
+    }
+
+    @Test
+    public void testPhoneSystem(){
+
+       PhoneSystemPage phoneSystemPage = navBarPage.clickPhoneSystem();
+    }
+
+//    @Test
+//    public void testMeetingAndChats(){
+//
+//        meetingAndChats = navBarPage.clickMeetingAndChats();
+//    }
+
+
+    @Test
     public void testDownloadZoomClient()
     {
         DownloadZoomClient downloadZoomClient = topNavigation.clickDownloadZoom();
     }
 
     @Test
-    public void testMeetingsAndChat()
-    {
-        MeetingsAndChat meetingsAndChat = navBarPage.clickMeetingChat();
-    }
-
+    public void testMeetingsAndChat(){MeetingsAndChat meetingsAndChat = navBarPage.clickMeetingChat();}
 
 
     @Test
-    public void testLiveTraining()
-    {
+    public void testLiveTraining(){
         LiveTraining liveTraining = topNavigation.clickLiveTraining();
     }
 
@@ -100,9 +116,15 @@ public class HomePageTest {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            driver.quit();
-        }
+          
+        driver.quit();
     }
+
+    public void testZoomBlog(){
+       ZoomBlog zoomBlog= topNavigation.clickZoomBlog();
+
+    }
+}
 
 
 

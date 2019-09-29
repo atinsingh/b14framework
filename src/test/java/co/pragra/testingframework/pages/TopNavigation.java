@@ -31,6 +31,8 @@ public class TopNavigation {
     private WebElement support;
 
 
+   @FindBy(css = "a[href='https://support.zoom.us/hc/en-us/articles/206618765-Zoom-Video-Tutorials']")
+    private WebElement videoTutorial;
     @FindBy(css = "a[href='https://zoom.us/livetraining'")
     private WebElement livetraining;
 
@@ -60,16 +62,17 @@ public class TopNavigation {
 
 
 
+    public VideoTutorialPage clickVideoTutorial(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(resources).moveToElement(videoTutorial).click().perform();
+        return new VideoTutorialPage(driver);
+    }
+
     public DownloadZoomClient clickDownloadZoom(){
         Actions actions = new Actions(driver);
         actions.moveToElement(resources).moveToElement(downloadzoomclient).click().perform();
         return new DownloadZoomClient(driver);
     }
-
-
-
-
-
 
 
     public ZoomBlog clickZoomBlog(){
