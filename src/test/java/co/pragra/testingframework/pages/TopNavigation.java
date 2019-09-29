@@ -24,15 +24,24 @@ public class TopNavigation {
     @FindBy(css = "a[href='https://zoom.us/events'")
     private WebElement waevents;
 
+    @FindBy(xpath = "//*[@id=\"resourcesDropdown\"]/li[9]/a")
+    private WebElement zoomblog;
+
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us'")
     private WebElement support;
+
+
+    @FindBy(css = "a[href='https://zoom.us/livetraining'")
+    private WebElement livetraining;
+
+    @FindBy (css = "a[href='https://zoom.us/download#client_4meeting'")
+    private WebElement downloadzoomclient;
+
 
     public TopNavigation(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
-
-
     public RequestDemoPage clickRequestDemoLink(){
         this.requstADemoLink.click();
         return new RequestDemoPage(driver);
@@ -51,4 +60,29 @@ public class TopNavigation {
 
 
 
+    public DownloadZoomClient clickDownloadZoom(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(resources).moveToElement(downloadzoomclient).click().perform();
+        return new DownloadZoomClient(driver);
+    }
+
+
+
+
+
+
+
+    public ZoomBlog clickZoomBlog(){
+        Actions actions=new Actions(driver);
+        actions.moveToElement(resources).moveToElement(zoomblog).click().perform();
+        return new ZoomBlog(driver);
+    }
+
+
+    public LiveTraining clickLiveTraining(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(resources).moveToElement(livetraining).click().perform();
+        return new LiveTraining(driver);
+    }
 }
+

@@ -7,17 +7,26 @@ import org.openqa.selenium.WebDriver;
 
 import org.testng.annotations.*;
 
+
+import java.util.concurrent.TimeUnit;
+
 public class HomePageTest {
     WebDriver driver;
     TopNavigation topNavigation;
     RequestDemoPage requestDemoPage;
+
     NavBarPage navBarPage;
+    ZoomBlog zoomBlog;
+
+    VideoWebinars videoWebinars;
+
 
     @BeforeSuite
     public void setUp() {
         driver = DriverManager.getWebDriver();
         driver.get(Configuration.getInstance().getProperty("appUrl"));
         driver.manage().window().maximize();
+
     }
 
     @BeforeMethod
@@ -25,6 +34,10 @@ public class HomePageTest {
         topNavigation = new TopNavigation(driver);
         navBarPage = new NavBarPage(driver);
     }
+
+
+
+
 
     @Test
     public void testRequestDemo() {
@@ -37,6 +50,7 @@ public class HomePageTest {
 
     @Test
     public void testFAQ() {
+
         FaQPage faQPage = topNavigation.clickFAQ();
     }
     @Test
@@ -47,18 +61,50 @@ public class HomePageTest {
     public void testMarketPlace() {
         MarketPlace mp = navBarPage.clickMarketPlace();
     }
-//    @Test
-//    public void testPhoneTest() {
-//        PhoneSystemPage mp = navBarPage.clickPhoneSystem();
-//    }
 
-    @AfterSuite
-    public void tearDown() {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.quit();
+
+    @Test
+    public void testDownloadZoomClient()
+    {
+        DownloadZoomClient downloadZoomClient = topNavigation.clickDownloadZoom();
     }
-}
+
+    @Test
+    public void testMeetingsAndChat()
+    {
+        MeetingsAndChat meetingsAndChat = navBarPage.clickMeetingChat();
+    }
+
+
+
+    @Test
+    public void testLiveTraining()
+    {
+        LiveTraining liveTraining = topNavigation.clickLiveTraining();
+    }
+
+    @Test
+    public void testEducation()
+    {
+        educationSol educationsol = navBarPage.clickEducation();
+    }
+
+
+
+
+
+        @AfterSuite
+        public void tearDown () {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            driver.quit();
+        }
+    }
+
+
+
+
+
