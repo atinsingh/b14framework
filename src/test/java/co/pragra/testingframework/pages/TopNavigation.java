@@ -46,24 +46,16 @@ public class TopNavigation {
         return new FaQPage(driver);
     }
 
-<<<<<<< HEAD
     public DownloadZoomClient clickDownloadZoom(){
         Actions actions = new Actions(driver);
         actions.moveToElement(resources).moveToElement(downloadzoomclient).click().perform();
         return new DownloadZoomClient(driver);
     }
 
-    }
-
-
-
-
-=======
     public ZoomBlog clickZoomBlog(){
         Actions actions=new Actions(driver);
         actions.moveToElement(resources).moveToElement(zoomblog).click().perform();
         return new ZoomBlog(driver);
     }
-
->>>>>>> d1e7da24fd616cf2c9f2c16edcd198ea52e4cae9
+}
 
