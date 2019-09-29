@@ -25,6 +25,9 @@ public class TopNavigation {
     @FindBy(css = "a[href='https://support.zoom.us/hc/en-us'")
     private WebElement support;
 
+   @FindBy(css = "a[href='https://support.zoom.us/hc/en-us/articles/206618765-Zoom-Video-Tutorials']")
+    private WebElement videoTutorial;
+
     public TopNavigation(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
@@ -40,6 +43,12 @@ public class TopNavigation {
         Actions actions = new Actions(driver);
         actions.moveToElement(resources).moveToElement(faq).click().perform();
         return new FaQPage(driver);
+    }
+
+    public VideoTutorialPage clickVideoTutorial(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(resources).moveToElement(videoTutorial).click().perform();
+        return new VideoTutorialPage(driver);
     }
 
 
