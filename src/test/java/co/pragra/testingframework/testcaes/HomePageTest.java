@@ -1,10 +1,11 @@
 package co.pragra.testingframework.testcaes;
-
 import co.pragra.testingframework.config.Configuration;
 import co.pragra.testingframework.drivermanager.DriverManager;
 import co.pragra.testingframework.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+
+
 import java.util.concurrent.TimeUnit;
 
 public class HomePageTest {
@@ -25,6 +26,7 @@ public class HomePageTest {
     private MeetingsAndChat meetingsAndChat;
     private LiveTraining liveTraining;
    
+
     @BeforeSuite
     public void setUp() {
 
@@ -32,14 +34,20 @@ public class HomePageTest {
         driver.get(Configuration.getInstance().getProperty("appUrl"));
         driver.manage().window().maximize();
 
+
+       // driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
-   
+
     @BeforeMethod
+
     public void setPages() {
         topNavigation = new TopNavigation(driver);
         navBarPage = new NavBarPage(driver);
     }
+
+
+
 
 
     @Test
@@ -55,6 +63,14 @@ public class HomePageTest {
     public void testFAQ() {
 
          faQPage = topNavigation.clickFAQ();
+    }
+    @Test
+    public void testWAE() {
+        WebinarsAndEvents wae = topNavigation.clickWebinaraAndEvents();
+    }
+    @Test
+    public void testMarketPlace() {
+        MarketPlace mp = navBarPage.clickMarketPlace();
     }
 
 
@@ -103,6 +119,12 @@ public class HomePageTest {
 
 
 
+    public void testEducation()
+    {
+        educationSol educationsol = navBarPage.clickEducation();
+    }
+
+   
     public void testZoomBlog(){
 
         zoomBlog= topNavigation.clickZoomBlog();
@@ -137,3 +159,4 @@ public class HomePageTest {
         driver.quit();
     }
 }
+
