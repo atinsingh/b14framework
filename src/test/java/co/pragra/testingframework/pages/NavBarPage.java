@@ -1,6 +1,7 @@
 package co.pragra.testingframework.pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -10,25 +11,35 @@ public class NavBarPage {
 
     private WebDriver driver;
 
-    //li[class='dropdown mobile-hide']>a[id='btnSolutions']
 
     @FindBy(css = "li[class='dropdown mobile-hide']>a[id='btnSolutions']")
     private WebElement solutions;
 
 
-    //a[href="/zoomrooms"]
-
-    //a[href="https://zoom.us/phonesystem"]
     @FindBy(css = "a[href=\"https://zoom.us/phonesystem\"]")
     private WebElement phoneSystem;
 
-    @FindBy(css = "a[href*='zoomrooms']")
-    private WebElement meetingAndChats;
 
+    @FindBy(css = "a[href*='zoomrooms']")
+    private WebElement roomsAndWorkspaces;
+
+
+    @FindBy(css = "a[href*='meetings']")
+    private WebElement meetingsandchat;
+
+
+    @FindBy(xpath="//*[@id='first-col-nav']/div/a[4]")
+    private  WebElement VideoWeb;
+
+    @FindBy(css = "a[href*='healthcare']")
+    private WebElement healthcare;
+
+    @FindBy(css = "a[href*='finance']")
+    private WebElement finance;
 
     public NavBarPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     public PhoneSystemPage clickPhoneSystem(){
@@ -37,39 +48,21 @@ public class NavBarPage {
         return new PhoneSystemPage(driver);
     }
 
-
-//    public MeetingAndChats clickMeetingAndChats(){
-//        Actions actions = new Actions(driver);
-//        actions.moveToElement(solutions).moveToElement(meetingAndChats).click().build().perform();
-//        return new MeetingAndChats(driver);
-//    }
-
-}
-    private WebDriver driver;
-
-    @FindBy(css = "li[class= 'dropdown mobile-hide']>a[id='btnSolutions']")
-    private WebElement solutions;
-
-    @FindBy(css = "a[href*='zoomrooms']")
-    private WebElement roomsAndWorkspaces;
-
-    @FindBy (css = "li[class='dropdown mobile-hide']>a[id='btnSolutions']")
-    private WebElement solutions;
-
-    @FindBy(css = "a[href*='meetings']")
-    //@FindBy(css = "a[href=\"https://zoom.us/phonesystem\"]")
-    private WebElement meetingsandchat;
-    
-    @FindBy(xpath = "//*[@id=\"btnSolutions\"]")
-    private  WebElement Solution;
-
-    @FindBy(xpath="//*[@id='first-col-nav']/div/a[4]")
-    private  WebElement VideoWeb;
-
-    public NavBarPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public HealthcarePage clickHealthcare(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(solutions).moveToElement(healthcare).click().build().perform();
+        return new HealthcarePage(driver);
     }
+
+
+    public FinancePage clickFinance(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(solutions).moveToElement(finance).click().build().perform();
+        return new FinancePage(driver);
+    }
+
+
+
 
     public MeetingsAndChat clickMeetingChat() {
 
@@ -91,7 +84,7 @@ public class NavBarPage {
 
     public VideoWebinars clickVideoWebinars(){
         Actions actions=new Actions(driver);
-        actions.moveToElement(Solution);
+        actions.moveToElement(solutions);
         actions.build().perform();
 //        WebDriverWait wait = new WebDriverWait(driver, 30);
 //        wait.until(ExpectedConditions.elementToBeClickable(VideoWeb));

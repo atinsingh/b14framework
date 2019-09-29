@@ -8,20 +8,26 @@ import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
 
 public class HomePageTest {
-    WebDriver driver;
-    TopNavigation topNavigation;
-    RequestDemoPage requestDemoPage;
-   // PhoneSystemPage phoneSystemPage;
-    NavBarPage navBarPage;
-    MeetingAndChats meetingAndChats;
 
-    
-   // RoomsAndWorkspaces roomsAndWorkspaces;
-    ZoomBlog zoomBlog;
-    VideoWebinars videoWebinars;
+    private WebDriver driver;
+    private TopNavigation topNavigation;
+    private RequestDemoPage requestDemoPage;
+    private PhoneSystemPage phoneSystemPage;
+    private NavBarPage navBarPage;
+    private FinancePage financePage;
+    private VideoTutorialPage videoTutorialPage;
+    private HealthcarePage healthcarePage;
+    private ZoomBlog zoomBlog;
+    private RoomsAndWorkspaces roomsAndWorkspaces;
+    private VideoWebinars videoWebinars;
+    private FaQPage faQPage;
+    private DownloadZoomClient downloadZoomClient;
+    private MeetingsAndChat meetingsAndChat;
+    private LiveTraining liveTraining;
    
     @BeforeSuite
     public void setUp() {
+
         driver = DriverManager.getWebDriver();
         driver.get(Configuration.getInstance().getProperty("appUrl"));
         driver.manage().window().maximize();
@@ -48,19 +54,20 @@ public class HomePageTest {
     @Test
     public void testFAQ() {
 
-        FaQPage faQPage = topNavigation.clickFAQ();
+         faQPage = topNavigation.clickFAQ();
     }
 
 
     @Test
     public void testVideoTutorial() {
-        VideoTutorialPage videoTutorialPage = topNavigation.clickVideoTutorial();
+
+         videoTutorialPage = topNavigation.clickVideoTutorial();
     }
 
     @Test
     public void testPhoneSystem(){
 
-       PhoneSystemPage phoneSystemPage = navBarPage.clickPhoneSystem();
+        phoneSystemPage = navBarPage.clickPhoneSystem();
     }
 
 //    @Test
@@ -71,20 +78,53 @@ public class HomePageTest {
 
 
     @Test
-    public void testDownloadZoomClient(){DownloadZoomClient downloadZoomClient = topNavigation.clickDownloadZoom();}
+    public void testDownloadZoomClient(){
+
+
+         downloadZoomClient = topNavigation.clickDownloadZoom();}
 
     @Test
-    public void testMeetingsAndChat(){MeetingsAndChat meetingsAndChat = navBarPage.clickMeetingChat();}
+    public void testMeetingsAndChat(){
+
+         meetingsAndChat = navBarPage.clickMeetingChat();}
 
 
     @Test
     public void testLiveTraining(){
-        LiveTraining liveTraining = topNavigation.clickLiveTraining();
+
+         liveTraining = topNavigation.clickLiveTraining();
     }
 
     @Test
     public void testRoomsAndWorkspaces(){
-       RoomsAndWorkspaces  roomsAndWorkspaces = navBarPage.clickRoomsAndWorkspaces();
+
+        roomsAndWorkspaces = navBarPage.clickRoomsAndWorkspaces();
+    }
+
+
+
+    public void testZoomBlog(){
+
+        zoomBlog= topNavigation.clickZoomBlog();
+
+    }
+
+    @Test
+    public void testVideoWebinar(){
+
+        videoWebinars= navBarPage.clickVideoWebinars();
+    }
+
+    @Test
+    public void testHealthcare(){
+
+        healthcarePage = navBarPage.clickHealthcare();
+    }
+
+    @Test
+    public void testFinance(){
+
+        financePage = navBarPage.clickFinance();
     }
 
     @AfterSuite
@@ -96,17 +136,4 @@ public class HomePageTest {
         }
         driver.quit();
     }
-
-    public void testZoomBlog(){
-       ZoomBlog zoomBlog= topNavigation.clickZoomBlog();
-
-    }
-
-    @Test
-    public void testVideoWebinar(){
-        VideoWebinars videoWebinars= navBarPage.clickVideoWebinars();
-    }
-
-
-
 }

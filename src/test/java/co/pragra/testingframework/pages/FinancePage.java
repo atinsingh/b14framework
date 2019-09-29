@@ -2,9 +2,10 @@ package co.pragra.testingframework.pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class MeetingAndChats {
+public class FinancePage {
 
-    public MeetingAndChats(WebDriver driver){
+    FinancePage(WebDriver driver){
+
 
     }
 }
