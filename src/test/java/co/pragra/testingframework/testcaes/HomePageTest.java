@@ -80,7 +80,7 @@ public class HomePageTest {
     }
     @Test
     public void testMarketPlace() {
-        MarketPlace mp = navBarPage.clickMarketPlace();
+       // MarketPlace mp = navBarPage.clickMarketPlace();
     }
 
 
@@ -131,7 +131,7 @@ public class HomePageTest {
 
     public void testEducation()
     {
-        educationSol educationsol = navBarPage.clickEducation();
+        //educationSol educationsol = navBarPage.clickEducation();
     }
 
    
