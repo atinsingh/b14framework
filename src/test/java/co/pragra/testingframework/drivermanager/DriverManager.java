@@ -23,8 +23,8 @@ public class DriverManager {
     private void init(){
         System.setProperty("webdriver.chrome.driver",
                 Configuration.getInstance().getProperty("chrome.executable"));
-        System.setProperty("webdriver.gecko.driver",
-                Configuration.getInstance().getProperty("firefox.executable"));
+//        System.setProperty("webdriver.gecko.driver",
+//                Configuration.getInstance().getProperty("firefox.executable"));
 //        System.setProperty("webdriver.internetexplorer.driver",
 //                Configuration.getInstance().getProperty("ie.executable"));
 //        System.setProperty("webdriver.opera.driver",
@@ -57,7 +57,7 @@ public class DriverManager {
     public static WebDriver getWebDriver(){
         if(manager==null){
             manager = new DriverManager();
-            return manager.getDriver();
+
         }
         return manager.getDriver();
     }
