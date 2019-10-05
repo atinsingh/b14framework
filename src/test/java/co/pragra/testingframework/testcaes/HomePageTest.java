@@ -10,6 +10,12 @@ import co.pragra.testingframework.pages.TopNavigation;
 import co.pragra.testingframework.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class HomePageTest {
     WebDriver driver;
@@ -26,13 +32,7 @@ public class HomePageTest {
     SupportPhonePage supportPhonePage;
     ContactSalesPage contactSalesPage;
     PlansPricingPage plansPricingPage;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Scanner;
 
-import java.util.concurrent.TimeUnit;
 
 public class HomePageTest {
 
@@ -151,6 +151,7 @@ public class HomePageTest {
 
 
 
+
     public void testEducation()
     {
         //educationSol educationsol = navBarPage.clickEducation();
@@ -219,4 +220,4 @@ public class HomePageTest {
         System.out.println((num.intValue()));
     }
 }
-
+}
