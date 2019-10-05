@@ -1,6 +1,12 @@
 package co.pragra.testingframework.testcaes;
 import co.pragra.testingframework.config.Configuration;
+import co.pragra.testingframework.data.ExcelDataProvider;
+import co.pragra.testingframework.data.StaticDataProvider;
 import co.pragra.testingframework.drivermanager.DriverManager;
+import co.pragra.testingframework.pages.FaQPage;
+import co.pragra.testingframework.pages.HomePage;
+import co.pragra.testingframework.pages.RequestDemoPage;
+import co.pragra.testingframework.pages.TopNavigation;
 import co.pragra.testingframework.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -20,9 +26,36 @@ public class HomePageTest {
     SupportPhonePage supportPhonePage;
     ContactSalesPage contactSalesPage;
     PlansPricingPage plansPricingPage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
+import java.util.concurrent.TimeUnit;
+
+public class HomePageTest {
+
+    private WebDriver driver;
+    private TopNavigation topNavigation;
+    private RequestDemoPage requestDemoPage;
+    private PhoneSystemPage phoneSystemPage;
+    private NavBarPage navBarPage;
+    private FinancePage financePage;
+    private VideoTutorialPage videoTutorialPage;
+    private HealthcarePage healthcarePage;
+    private ZoomBlog zoomBlog;
+    private RoomsAndWorkspaces roomsAndWorkspaces;
+    private VideoWebinars videoWebinars;
+    private FaQPage faQPage;
+    private DownloadZoomClient downloadZoomClient;
+    private MeetingsAndChat meetingsAndChat;
+    private LiveTraining liveTraining;
+   
 
     @BeforeSuite
     public void setUp() {
+
         driver = DriverManager.getWebDriver();
         driver.get(Configuration.getInstance().getProperty("appUrl"));
         driver.manage().window().maximize();
@@ -38,20 +71,35 @@ public class HomePageTest {
 
     @Test
     public void testRequestDemo() {
+    // independent - of how you want data
+    //
+    @Test(dataProvider = "companyDataProvider", dataProviderClass = StaticDataProvider.class)
+    public void testRequestDemo(String email, String company) {
         requestDemoPage = topNavigation.clickRequestDemoLink();
-        requestDemoPage.keyInEmail("test@gmail.com")
+        requestDemoPage.keyInEmail(email)
                 .and()
-                .keyInCompanty("abc");
+                .keyInCompanty(company);
     }
     @Test
     public void testFAQ() {FaQPage faQPage = topNavigation.clickFAQ();}
+    public void testFAQ() {
+
+         faQPage = topNavigation.clickFAQ();
+    }
     @Test
     public void testWAE() {
         WebinarsAndEvents wae = topNavigation.clickWebinaraAndEvents();
     }
     @Test
+    public void testMarketPlace() {
+       // MarketPlace mp = navBarPage.clickMarketPlace();
+    }
+
+
+    @Test
     public void testVideoTutorial() {
-        VideoTutorialPage videoTutorialPage = topNavigation.clickVideoTutorial();
+
+         videoTutorialPage = topNavigation.clickVideoTutorial();
     }
     @Test
     public void testDownloadZoomClient()
@@ -63,13 +111,62 @@ public class HomePageTest {
     {
         meetingsAndChat = navBarPage.clickMeetingChat();
     }
+
+    @Test
+    public void testPhoneSystem(){
+
+        phoneSystemPage = navBarPage.clickPhoneSystem();
+    }
+
+//    @Test
+//    public void testMeetingAndChats(){
+//
+//        meetingAndChats = navBarPage.clickMeetingAndChats();
+//    }
+
+
+    @Test
+    public void testDownloadZoomClient(){
+
+
+         downloadZoomClient = topNavigation.clickDownloadZoom();}
+
+    @Test
+    public void testMeetingsAndChat(){
+
+         meetingsAndChat = navBarPage.clickMeetingChat();}
+
+
     @Test
     public void testLiveTraining(){
-        LiveTraining liveTraining = topNavigation.clickLiveTraining();
+
+         liveTraining = topNavigation.clickLiveTraining();
     }
+
+    @Test
+    public void testRoomsAndWorkspaces(){
+
+        roomsAndWorkspaces = navBarPage.clickRoomsAndWorkspaces();
+    }
+
+
+
+    public void testEducation()
+    {
+        //educationSol educationsol = navBarPage.clickEducation();
+    }
+
+   
+    public void testZoomBlog(){
+
+        zoomBlog= topNavigation.clickZoomBlog();
+
+    }
+
     @Test
     public void testVideoWebinar(){
-        VideoWebinars videoWebinars= navBarPage.clickVideoWebinars();
+
+        videoWebinars= navBarPage.clickVideoWebinars();
     }
     @Test
     //public void testFinancePage() throws InterruptedException{ financePage = navBarPage.clickFinance();}
@@ -89,6 +186,18 @@ public class HomePageTest {
     @Test
     public void testPlansPricingPage(){plansPricingPage = footerPage.clickPalansPricingLink();}
 
+    @Test
+    public void testHealthcare(){
+
+        healthcarePage = navBarPage.clickHealthcare();
+    }
+
+    @Test
+    public void testFinance(){
+
+        financePage = navBarPage.clickFinance();
+    }
+
     @AfterSuite
     public void tearDown() {
         try {
@@ -102,6 +211,12 @@ public class HomePageTest {
        public void testZoomBlog(){
        ZoomBlog zoomBlog= topNavigation.clickZoomBlog();
 
+
+    @Test(dataProvider = "excelData", dataProviderClass = ExcelDataProvider.class)
+    public void testName(String email, String company, Double num) {
+        System.out.println(email);
+        System.out.println(company);
+        System.out.println((num.intValue()));
     }
 }
 

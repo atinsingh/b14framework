@@ -13,14 +13,18 @@ public class NavBarPage {
 
     private WebDriver driver;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01eda664466d1403ee1a78778e7a64eeb0111b0d
     @FindBy(css = "li[class='dropdown mobile-hide']>a[id='btnSolutions']")
     private WebElement solutions;
     @FindBy(css ="a[href*='https://marketplace.zoom.us']")
     private WebElement mk;
-    @FindBy(css = "a[href*='meetings']")
-    private WebElement meetingsandchat;
+    
     @FindBy(xpath ="a[href*='education']")
     private WebElement ed;
+<<<<<<< HEAD
     @FindBy(css = "a[href=\"https://zoom.us/phonesystem\"]")
     private WebElement phoneSystem;
     @FindBy(css = "a[href*='zoomrooms']")
@@ -35,12 +39,58 @@ public class NavBarPage {
     private WebElement signIn;
     @FindBy(css="div[id='signupfree']")
     private WebElement signUp;
+=======
 
 
-    public NavBarPage (WebDriver driver) {
+    @FindBy(css = "a[href=\"https://zoom.us/phonesystem\"]")
+    private WebElement phoneSystem;
+
+
+    @FindBy(css = "a[href*='zoomrooms']")
+    private WebElement roomsAndWorkspaces;
+
+
+    @FindBy(css = "a[href*='meetings']")
+    private WebElement meetingsandchat;
+
+
+    @FindBy(xpath="//*[@id='first-col-nav']/div/a[4]")
+    private  WebElement VideoWeb;
+>>>>>>> 01eda664466d1403ee1a78778e7a64eeb0111b0d
+
+    @FindBy(css = "a[href*='healthcare']")
+    private WebElement healthcare;
+
+    @FindBy(css = "a[href*='finance']")
+    private WebElement finance;
+
+
+
+    public NavBarPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    public PhoneSystemPage clickPhoneSystem(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(solutions).moveToElement(phoneSystem).click().build().perform();
+        return new PhoneSystemPage(driver);
+    }
+
+    public HealthcarePage clickHealthcare(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(solutions).moveToElement(healthcare).click().build().perform();
+        return new HealthcarePage(driver);
+    }
+
+
+    public FinancePage clickFinance(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(solutions).moveToElement(finance).click().build().perform();
+        return new FinancePage(driver);
+    }
+
+
 
     public MeetingsAndChat clickMeetingChat() {
       //  wait.until(ExpectedConditions.visibilityOf(meetingsandchat));
