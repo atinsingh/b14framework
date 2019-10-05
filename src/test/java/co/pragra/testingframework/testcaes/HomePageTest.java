@@ -3,13 +3,18 @@ import co.pragra.testingframework.config.Configuration;
 import co.pragra.testingframework.data.ExcelDataProvider;
 import co.pragra.testingframework.data.StaticDataProvider;
 import co.pragra.testingframework.drivermanager.DriverManager;
+import co.pragra.testingframework.listeners.ScreenShotListener;
 import co.pragra.testingframework.pages.FaQPage;
 import co.pragra.testingframework.pages.HomePage;
 import co.pragra.testingframework.pages.RequestDemoPage;
 import co.pragra.testingframework.pages.TopNavigation;
 
 import co.pragra.testingframework.pages.*;
+import co.pragra.testingframework.reports.HtmlReport;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.io.FileInputStream;
@@ -20,6 +25,7 @@ import java.util.Scanner;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners({ScreenShotListener.class})
 public class HomePageTest {
 
     private WebDriver driver;
@@ -37,7 +43,8 @@ public class HomePageTest {
     private DownloadZoomClient downloadZoomClient;
     private MeetingsAndChat meetingsAndChat;
     private LiveTraining liveTraining;
-   
+
+    ExtentTest htmlReport = HtmlReport.getReportInstance().createTest("HomePagetest");
 
     @BeforeSuite
     public void setUp() {
@@ -66,6 +73,9 @@ public class HomePageTest {
         requestDemoPage.keyInEmail(email)
                 .and()
                 .keyInCompanty(company);
+
+            Assert.fail();
+
     }
 
 
@@ -175,6 +185,11 @@ public class HomePageTest {
         System.out.println(email);
         System.out.println(company);
         System.out.println((num.intValue()));
+    }
+
+    @AfterClass
+    public void flush(){
+        HtmlReport.getReportInstance().flush();
     }
 }
 
