@@ -119,10 +119,10 @@ public class HomePageTest {
 
 
 
-    public void testEducation()
-    {
-        educationSol educationsol = navBarPage.clickEducation();
-    }
+//    public void testEducation()
+//    {
+//        educationSol educationsol = navBarPage.clickEducation();
+//    }
 
    
     public void testZoomBlog(){

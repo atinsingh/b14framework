@@ -1,6 +1,7 @@
 package co.pragra.testingframework.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
@@ -48,7 +49,10 @@ public class NavBarPage {
     @FindBy(css = "a[href*='healthcare']")
     private WebElement healthcare;
 
-    @FindBy(css = "a[href*='finance']")
+    ////h3[text()='Finance' ]
+   // @FindBy(css = "a[href*='finance']")
+
+    @FindBy(css=".textwidget a[href*='/finance']")
     private WebElement finance;
 
 
@@ -72,8 +76,11 @@ public class NavBarPage {
 
 
     public FinancePage clickFinance(){
+
         Actions actions = new Actions(driver);
         actions.moveToElement(solutions).moveToElement(finance).click().build().perform();
+
+        //actions.moveToElement(finance).click().build().perform();
         return new FinancePage(driver);
     }
 
@@ -104,6 +111,14 @@ public class NavBarPage {
 //        wait.until(ExpectedConditions.elementToBeClickable(VideoWeb));
         actions.moveToElement(VideoWeb).click().perform();
         return new VideoWebinars(driver);
+    }
+
+    public MarketPlace clickMarketPlace(){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(solutions).build().perform();
+
+        actions.moveToElement(mk).click().perform();
+        return new MarketPlace(driver);
     }
 
 }
