@@ -2,6 +2,9 @@ package co.pragra.testingframework.drivermanager;
 
 import co.pragra.testingframework.config.Configuration;
 import co.pragra.testingframework.config.Constants;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,6 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class DriverManager {
 
+    private final Logger logger = LogManager.getLogger(DriverManager.class);
     private WebDriver driver;
     private static DriverManager manager;
 
@@ -21,6 +25,7 @@ public class DriverManager {
     }
 
     private void init(){
+        logger.log(Level.INFO, "Using executable from path {} for chrome", Configuration.getInstance().getProperty("chrome.executable"));
         System.setProperty("webdriver.chrome.driver",
                 Configuration.getInstance().getProperty("chrome.executable"));
 //        System.setProperty("webdriver.gecko.driver",
@@ -43,10 +48,13 @@ public class DriverManager {
 
     private WebDriver createDriver(){
         if(Configuration.getInstance().getProperty("browser").equals(Constants.CHROME)){
+            logger.log(Level.INFO, "Found match for  {}  browser",Configuration.getInstance().getProperty("browser") );
             return new ChromeDriver();
         }else if(Configuration.getInstance().getProperty("browser").equals(Constants.FIREFOX)){
             return new FirefoxDriver();
         }else {
+            logger.log(Level.INFO, "Not Found match for  {}  browser, returning default to CHROME",Configuration.getInstance().getProperty("browser") );
+
             return new ChromeDriver();
         }
     }

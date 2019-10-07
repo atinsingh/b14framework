@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="co.pragra.testingframework.testcaes.HomePageTest" verbose="0">
+    <test name="Command line test">
+        <classes>
+            <class name="co.pragra.testingframework.testcaes.HomePageTest"/>
+        </classes>
+    </test> <!-- Command line test -->
+</suite> <!-- co.pragra.testingframework.testcaes.HomePageTest -->
